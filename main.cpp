@@ -39,7 +39,7 @@ public:
 
     Ball()
     {
-    	// Cargar textura
+        // Cargar textura
         if(!texture.loadFromFile("resources/ball.png"))
             std::cout << "Error: No se pudo cargar textura de la ball" << std::endl;
         else
@@ -144,7 +144,7 @@ public:
     }
     void ProcessEvent(sf::Event* event)
     {
-    	// Cuando la tecla se presiona, activa el movimiento
+        // Cuando la tecla se presiona, activa el movimiento
         if (event->type == sf::Event::KeyPressed)
         {
             switch (event->key.code)
@@ -213,7 +213,7 @@ void collision_handler(Ball* ball, Rectangle* rectangle)
 
 bool end_game(Ball* ball)
 {
-	// Termina el juego cuando la bola sale de la pantalla por abajo
+    // Termina el juego cuando la bola sale de la pantalla por abajo
     if ((ball->position.y) > window_height)
     {
         music.stop();
@@ -337,7 +337,7 @@ int main()
         }
         else
         {
-        	// Cuando el juego termina ya solo se dibuja el texto de game over y la puntuacion
+            // Cuando el juego termina ya solo se dibuja el texto de game over y la puntuacion
             window.draw(game_over);
             window.draw(score_label);
         }
