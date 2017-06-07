@@ -33,13 +33,13 @@ class Ball
 public:
     sf::Texture texture;
     sf::Sprite shape;
-    //sf::CircleShape shape;
     sf::Vector2f position;
     sf::Vector2f speed;
     sf::Vector2u size;
 
     Ball()
     {
+    	// Cargar textura
         if(!texture.loadFromFile("resources/ball.png"))
             std::cout << "Error: No se pudo cargar textura de la ball" << std::endl;
         else
@@ -47,8 +47,7 @@ public:
 
         size = texture.getSize();
 
-        //srand (time(NULL));
-        //r = (double) rand() / (RAND_MAX);
+        // Generar posicion inicial aleatoria
         std::random_device rd;
         std::mt19937 rng(rd());
         std::uniform_int_distribution<int> uni(0, window_width - size.x);
@@ -145,6 +144,7 @@ public:
     }
     void ProcessEvent(sf::Event* event)
     {
+    	// Cuando la tecla se presiona, activa el movimiento
         if (event->type == sf::Event::KeyPressed)
         {
             switch (event->key.code)
@@ -163,6 +163,8 @@ public:
                 break;
             };
         }
+
+        // Desactiva el movimiento cuando la tecla se deja de presionar
         if (event->type == sf::Event::KeyReleased)
         {
             switch (event->key.code)
@@ -211,6 +213,7 @@ void collision_handler(Ball* ball, Rectangle* rectangle)
 
 bool end_game(Ball* ball)
 {
+	// Termina el juego cuando la bola sale de la pantalla por abajo
     if ((ball->position.y) > window_height)
     {
         music.stop();
@@ -334,6 +337,7 @@ int main()
         }
         else
         {
+        	// Cuando el juego termina ya solo se dibuja el texto de game over y la puntuacion
             window.draw(game_over);
             window.draw(score_label);
         }
