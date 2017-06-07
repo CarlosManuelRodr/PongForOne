@@ -1,10 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include <ctime>
-#include <cstdlib>
 #include <iostream>
 #include <sstream>
-#include <cmath>
 #include <random>
 
 // Audio
